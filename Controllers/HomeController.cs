@@ -11,17 +11,18 @@ namespace MeetingApp.Controllers
 			int saat = DateTime.Now.Hour;
 			ViewBag.selamlama =saat >12 ?  "İyi Günler": "Günaydın";
 			ViewBag.UserName = "Hüseyin";
+            int  UserCount = Repository.Users.Where(i => i.WillAttend == true).Count();
 
-			//ViewData["Selamlama"] =saat >12 ?  "İyi Günler": "Günaydın";   
-			//ViewData["UserName"]="Hüseyin"
-			//Viewdata yöntemiyle de bu verileri taşıyabiliri
+            //ViewData["Selamlama"] =saat >12 ?  "İyi Günler": "Günaydın";   
+            //ViewData["UserName"]="Hüseyin"
+            //Viewdata yöntemiyle de bu verileri taşıyabiliri
 
-			MeetingInfo meetingInfo = new MeetingInfo()
+            MeetingInfo meetingInfo = new MeetingInfo()
 			{
 				Id = 1,
 				Location = "İstanbul",
 				Date=new DateTime(2024 , 01 ,20,20,0,0),
-				NumberOfPeople = 100,
+				NumberOfPeople = UserCount,
 			};
 
 			return View(meetingInfo);

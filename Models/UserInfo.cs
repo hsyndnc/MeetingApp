@@ -1,10 +1,23 @@
-﻿namespace MeetingApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MeetingApp.Models
 {
 	public class UserInfo
 	{
-		public string Name { get; set; }
-		public string Phone { get; set; }
-		public string Email { get; set; }
-		public bool WillAttend { get; set; }
+        public int Id { get; set; }
+
+		[Required(ErrorMessage ="Ad alanı zorunlu !")]
+        public string Name { get; set; }
+
+        [Required]
+        public string Phone { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage ="Hatalı Email !")]
+        public string Email { get; set; }
+
+
+        [Required]
+        public bool? WillAttend { get; set; } //bool türü tanımlanıp değer ataması yapılmadığında base olarak false gelir. 
 	}
 }
